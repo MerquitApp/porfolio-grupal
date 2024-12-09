@@ -27,7 +27,7 @@ export default async function seed() {
     {
       id: 4,
       name: "Andy Uzal",
-      jobTitle: "Frontend Developer",
+      jobTitle: "Full Stack Developer",
       imgSrc: "andy.jpg",
       porfolioSite: "https://andyuzal.tech/"
     }
