@@ -1,60 +1,23 @@
 [
-    {
-        "type": "major",
-        "name":"Major Investor 1"
-    },
-    {
-        "type":"major",
-        "name":"Major Investor 2"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    },
-    {
-        "type":"minor",
-        "name":"Minor Investor",
-        "subtitle":"Company Name"
-    }
+  {
+    "type": "major",
+    "name": "Hugo Boyano",
+    "logo": "https://hgo.one/_astro/hugo.GUYShbJC_1CepsD.webp",
+    "subtitle": "Full Stack Developer"
+  },
+  {
+    "type": "major",
+    "name": "Andy Uzal",
+    "subtitle": "Full Stack Developer"
+  },
+  {
+    "type": "major",
+    "name": "Jhonatan Endo",
+    "subtitle": "Full Stack Developer"
+  },
+  {
+    "type": "major",
+    "name": "Andrés Jiménez",
+    "subtitle": "Full Stack Developer"
+  }
 ]

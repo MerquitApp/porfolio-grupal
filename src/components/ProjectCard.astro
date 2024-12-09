@@ -15,12 +15,9 @@ const { title, subtitle, contributors, stars, repoUrl, logo = null, starsBy = 1,
         <h3 class="project-title">{title}</h3>
     </div>
     <div class="text-4 text-center border-r-1 border-r-gray-200 hidden grid-col-[span_1] h-100% md:flex flex-col justify-center h-[100%] px-12.5">
-        <CountUp by={contributorsBy} start={0} end={contributors} unit="+" class="font-mono text-5 fw-bold" />Contributors
+        <CountUp by={contributorsBy} start={0} end={contributors} unit="+" class="font-mono text-5 fw-bold" /> Contribuidores
     </div>
-    <div class="text-4 text-center border-r-1 border-r-gray-200 hidden grid-col-[span_1] h-100% lg:flex flex-col justify-center h-[100%] px-12.5">
-        <CountUp by={starsBy} start={0} end={stars} unit="+" class="font-mono text-5 fw-bold" />Stars
-    </div>
-    <div class="grid-col-[span_1] justify-self-center flex flex-col justify-center h-100% h-[100%]">
+    <div class="grid-col-[span_2] justify-self-center flex flex-col justify-center h-100% h-[100%]">
         <a href={repoUrl} class="text-10 md:text-17">
             <GithubIcon />
             <div class="sr-only">
