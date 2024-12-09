@@ -1,12 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import CountUp from '../components/CountUp.astro';
 import Section from '../components/Section.astro';
 import { getCollection } from 'astro:content';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionSpacer from '../components/SectionSpacer.astro';
-import StatsGrid from '../components/StatsGrid.astro';
 import PeopleGrid from '../components/PeopleGrid.astro';
 
 const projects = await getCollection('projects');
