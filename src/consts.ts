@@ -1,1 +1,1 @@
-export const SITE_NAME = 'MercApp';
+export const SITE_NAME = 'MercApp - Porfolio';

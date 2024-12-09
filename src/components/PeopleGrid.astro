@@ -1,24 +1,9 @@
 ---
-import { getCollection } from "astro:content";
 import Section from "./Section.astro";
 import OpenIcon from "./icons/OpenIcon.astro";
+import { db, TeamMember } from "astro:db";
 
-const investors = await getCollection("investors");
-interface InvestorIndiv {
-  name: string;
-  type: "major" | "minor";
-  logo?: string;
-  subtitle?: string;
-}
-const investorsReducedByType = investors.reduce(
-  (acc, { data }: { data: InvestorIndiv[] }) => {
-    data.forEach((investor) => {
-      acc[investor.type] = (acc[investor.type] || []).concat(investor);
-    });
-    return acc;
-  },
-  {} as Record<InvestorIndiv["type"], InvestorIndiv[]>
-);
+const teamMembers = await db.select().from(TeamMember);
 ---
 
 <Section as="div" class="px-0" padBlock={false}>
@@ -29,28 +14,25 @@ const investorsReducedByType = investors.reduce(
     }}
   >
     {
-      investorsReducedByType.major.map(
-        ({ name, logo = false, subtitle = false }) => {
-          return (
-            <li class="flex items-center flex-col gap-3 border-b-1 border-gray-200 py-12.5 px-12.5">
-              <img
-                src={logo}
-                alt={name}
-                class="w-[250px] h-[300px] rounded object-cover"
-              />
-              <div class="text-center flex flex-col gap-1">
-                <h3 class="text-xl">{name}</h3>
-                {subtitle && (
-                  <small class="text-sm text-gray-500">{subtitle}</small>
-                )}
-              </div>
-              <a href="https://hgo.one" class="flex items-center gap-2 text-sm hover:underline">
-                Visita su perfil <OpenIcon class="w-4 h-4" />
-              </a>
-            </li>
-          );
-        }
-      )
+      teamMembers.map(({ id, name, jobTitle, imgSrc, porfolioSite }) => (
+        <li class={`flex items-center flex-col gap-3 border-b-1 border-gray-200 py-12.5 px-12.5 ${id % 2 === 0 ? "" : "border-r-1"}`}>
+          <img
+            src={imgSrc}
+            alt={`Foto de ${name}`}
+            class="w-[250px] h-[300px] rounded object-cover object-right-top"
+          />
+          <div class="text-center flex flex-col gap-1">
+            <h3 class="text-xl">{name}</h3>
+            <small class="text-sm text-gray-500">{jobTitle}</small>
+          </div>
+            <a
+              href={porfolioSite ?? `/team/${id}`}
+              class="flex items-center gap-2 text-sm hover:underline"
+            >
+              Visita su perfil <OpenIcon class="w-4 h-4" />
+            </a>
+        </li>
+      ))
     }
   </ul>
 </Section>

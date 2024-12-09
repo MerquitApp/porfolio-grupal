@@ -1,56 +1,107 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Section from '../components/Section.astro';
-import { getCollection } from 'astro:content';
-import ProjectCard from '../components/ProjectCard.astro';
-import SectionSpacer from '../components/SectionSpacer.astro';
-import PeopleGrid from '../components/PeopleGrid.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Section from "../components/Section.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SectionSpacer from "../components/SectionSpacer.astro";
+import PeopleGrid from "../components/PeopleGrid.astro";
+import { db } from "astro:db";
+import { Project } from "astro:db";
 
-const projects = await getCollection('projects');
+const projects = await db.select().from(Project);
 ---
 
 <Layout>
-	<Header gridBg>
-		<h2 class="text-12 leading-12 lg:text-20 lg:leading-20">MercApp</h2>
-		<p class="subtitle mx-auto mt-5">Vende fácil, compra inteligente</p>
-	</Header>
-	<main>
-		<Section index source="proyectos.json" fullWidthBorder>
-			<h2 class="title">Proyectos</h2>
-			<p class="subtitle-small">Las soluciones que buscas para hacer tu vida más fácil.</p>
-			<ul class="my-5 project-list ignore-content-container border-y-1 border-y-gray-200 border-y-dotted">
-				{projects.map((proj: any) => <ProjectCard {...proj.data} />)}
-			</ul>
-		</Section>
-		<Section variant="dark" index source="declaracion.md" fullWidthBorder>
-			<div class="lg:w-[60%] md:w-[70%] mx-auto">
-				<h2 class="title">Belief Statement</h2>
-				<p class="subtitle-mall">We believe in things that exist and are pragmatic. This can include buzzwords that make investors feel all warm inside.</p>
-				<ul class="flex flex-col gap-row-3 mt-3 subtitle-small">
-					<li><strong class="text-[1.2em]">Teamwork:</strong> Things and people should work together seamlessly for a better world and a better DX</li>
-					<li><strong class="text-[1.2em]">Performant:</strong> If you're not first you're last - some guy on TV once</li>
-					<li><strong class="text-[1.2em]">Even Tempered:</strong> Too blessed to be stressed. And too stressed to let the little things get to us</li>
-					<li><strong class="text-[1.2em]">On Kilter:</strong> When the going gets tough, the tough politely ask the weak to step up like just a little bit, if you don't mind</li>
-				</ul>
-			</div>
-		</Section>
-		<SectionSpacer size="md" />
-		<Section index source="equipo.md" fullWidthBorder>
-			<div class="pb-12.5">
-				<h2 class="title" id="equipo">¿Quiénes somos?</h2>
-				<p class="subtitle-small md:w-[50%]">Este es nuestro equipo de desarrollo. El corazón de nuestra innovación</p>
-			</div>
-			<PeopleGrid />
-		</Section>
-		<SectionSpacer />
-		<Section index source="organizacion.md" fullWidthBorder variantInside="dark">
-			<div class="grid lg:grid-cols-[4fr_1fr] place-items-center gap-5">
-				<h2 class="text-pretty title text-8 leading-8 font-bold c-gray-800 dark:c-gray-100">¿Quieres ver en que estamos trabajando?<br/><span class="c-gray-500 dark:c-gray-300 text-[0.9em]">¡Visitanos!</span></h2>
-				<div>
-					<a href="https://github.com/MerquitApp" class="block fw-bold bg-gray-800 c-gray-100 text-5 text-center py-4 px-7">Visitar Organización</a>
-				</div>
-			</div>
-		</Section>
-	</main>
+  <Header gridBg>
+    <h2 class="text-12 leading-12 lg:text-20 lg:leading-20">MercApp</h2>
+    <p class="subtitle mx-auto mt-5">Vende fácil, compra inteligente</p>
+  </Header>
+  <main>
+    <Section index source="proyectos.json" fullWidthBorder>
+      <h2 class="title">Proyectos</h2>
+      <p class="subtitle-small">
+        Las soluciones que buscas para hacer tu vida más fácil.
+      </p>
+      <ul
+        class="my-5 project-list ignore-content-container border-y-1 border-y-gray-200 border-y-dotted"
+      >
+        {projects.map((proj: any) => <ProjectCard {...proj} />)}
+      </ul>
+    </Section>
+    <Section variant="dark" index source="declaracion.md" fullWidthBorder>
+      <div class="lg:w-[60%] md:w-[70%] mx-auto">
+        <h2 class="title">Nuestra Visión</h2>
+        <p class="subtitle-mall">
+          En nuestro equipo de desarrollo, creemos en lo práctico y lo posible.
+          Nos impulsan las ideas innovadoras, el deseo de optimización constante
+          y las tecnologías que crean soluciones reales para nuestros clientes.
+        </p>
+        <ul class="flex flex-col gap-row-3 mt-3 subtitle-small">
+          <li>
+            <strong class="text-[1.2em]">Trabajo en Equipo:</strong> Las tecnologías
+            modernas como Next.js, Nest.js, Node.js, React, y Tailwind no son nada
+            sin el talento humano. Nuestra filosofía es colaborar para crear software
+            que transforme la experiencia de los usuarios y maximice el valor para
+            nuestros clientes.
+          </li>
+          <li>
+            <strong class="text-[1.2em]">Rendimiento por Definición:</strong> Si
+            no es rápido, escalable y eficiente, no es nuestro estilo. Optimizamos
+            cada línea de código y cada recurso en AWS, PostgreSQL y más, asegurando
+            un software impecable y costos mínimos en infraestructura.
+          </li>
+          <li>
+            <strong class="text-[1.2em]">Calma bajo Presión:</strong> Desarrollar
+            software no debería ser un caos. Estamos aquí para simplificar lo complejo
+            y crear aplicaciones que superen las expectativas sin sacrificar la tranquilidad
+            del cliente ni la nuestra.
+          </li>
+          <li>
+            <strong class="text-[1.2em]">Equilibrio Perfecto:</strong> Buscamos siempre
+            ese punto medio ideal entre innovación y confiabilidad, logrando proyectos
+            robustos que sean fáciles de usar, mantener y escalar. Sabemos que el
+            software óptimo no solo beneficia al cliente, sino que también deleita
+            a sus usuarios.
+          </li>
+        </ul>
+        <p class="mt-3">
+          ¿Nuestro objetivo? Proveer experiencias confortables y memorables en
+          cada interacción tecnológica.
+        </p>
+      </div>
+    </Section>
+    <SectionSpacer size="md" />
+    <Section index source="equipo.md" fullWidthBorder>
+      <div class="pb-12.5">
+        <h2 class="title" id="equipo">¿Quiénes somos?</h2>
+        <p class="subtitle-small md:w-[50%]">
+          Este es nuestro equipo de desarrollo. El corazón de nuestra innovación
+        </p>
+      </div>
+      <PeopleGrid />
+    </Section>
+    <SectionSpacer />
+    <Section
+      index
+      source="organizacion.md"
+      fullWidthBorder
+      variantInside="dark"
+    >
+      <div class="grid lg:grid-cols-[4fr_1fr] place-items-center gap-5">
+        <h2
+          class="text-pretty title text-8 leading-8 font-bold c-gray-800 dark:c-gray-100"
+        >
+          ¿Quieres ver en que estamos trabajando?<br /><span
+            class="c-gray-500 dark:c-gray-300 text-[0.9em]">¡Visitanos!</span>
+        </h2>
+        <div>
+          <a
+            href="https://github.com/MerquitApp"
+            class="block fw-bold bg-gray-800 c-gray-100 text-5 text-center py-4 px-7"
+            >Visitar Organización</a
+          >
+        </div>
+      </div>
+    </Section>
+  </main>
 </Layout>
