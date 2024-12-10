@@ -22,7 +22,7 @@ export default async function seed() {
       name: "Jhonatan Endo",
       jobTitle: "Full Stack Developer",
       imgSrc: "jhonatan.jpg",
-      porfolioSite: "#"
+      porfolioSite: "https://jjendo.com/"
     },
     {
       id: 4,
